@@ -8,10 +8,10 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class ChatController {
 
-    @MessageMapping("/chat")
-    @SendTo("/topic/messages")
+    @MessageMapping("/message")
+    @SendTo("/topic/chat")
     public Message chat(Message message) {
-        message.setMessage(message.getMessage() + " - recived!");
+        //TODO validar e adicionar no banco de dados
         return message;
     }
 
