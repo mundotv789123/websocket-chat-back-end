@@ -8,7 +8,8 @@ import java.time.LocalDateTime;
 @Table(name = "messages")
 public class Message {
     private @Id @GeneratedValue(strategy = GenerationType.AUTO) @Getter int id;
-    private @Getter String message, author;
+    private @Getter @Column(columnDefinition = "TEXT") String message;
+    private @Getter String author;
     private @Getter LocalDateTime createdAt = LocalDateTime.now();
 
     public Message() { }
