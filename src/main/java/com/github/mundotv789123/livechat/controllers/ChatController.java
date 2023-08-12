@@ -30,9 +30,9 @@ public class ChatController {
         return message;
     }
 
-    @GetMapping("/messages")
+    @GetMapping("/api/messages")
     public List<Message> messages() {
-        var page = PageRequest.of(0, 10);
+        var page = PageRequest.of(0, 25);
         return messagesRespository.findAll(page).toList();
     }
 }
