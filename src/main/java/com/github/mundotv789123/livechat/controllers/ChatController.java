@@ -3,6 +3,7 @@ package com.github.mundotv789123.livechat.controllers;
 import com.github.mundotv789123.livechat.models.Message;
 import com.github.mundotv789123.livechat.repositories.MessagesRespository;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
@@ -32,7 +33,8 @@ public class ChatController {
 
     @GetMapping("/api/messages")
     public List<Message> messages() {
-        var page = PageRequest.of(0, 25);
+        var order = Sort.by(Sort.Direction.DESC, "createdAt");
+        var page = PageRequest.of(0, 25, order);
         return messagesRespository.findAll(page).toList();
     }
 }
